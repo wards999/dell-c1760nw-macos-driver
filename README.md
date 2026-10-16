@@ -1,10 +1,21 @@
-# Dell C1760nw driver for macOS (Apple Silicon)
+# Dell C1760nw printer driver for Mac (Apple Silicon)
 
-A native macOS printer driver for the **Dell C1760nw**. Dell's own Mac
-driver stopped working years ago and there is no AirPrint support. The
-driver should also work with the printer's siblings, which use the same
-HBPLv1 printer language: Dell 1250c / C1660w, Xerox Phaser 6010, Fuji Xerox
-DocuPrint CP105b / CP205, and Epson AcuLaser C1700.
+**A working macOS driver for the Dell C1760nw color laser printer** on Apple
+Silicon Macs (M1, M2, M3, M4 and later). Dell's own Mac driver stopped
+working years ago, and the printer has no AirPrint. If your Dell C1760nw
+won't print from your Mac, or macOS can't find a driver for it, this fixes
+it.
+
+It's a native CUPS driver: no Rosetta, Windows or Linux print server
+needed. The driver should also work with the C1760nw's siblings, which use
+the same HBPLv1 printer language:
+
+- Dell 1250c, Dell C1660w
+- Xerox Phaser 6010 / 6010N
+- Fuji Xerox DocuPrint CP105b / CP205 / CP205w
+- Epson AcuLaser C1700
+
+**Features:**
 
 - Runs natively on Apple Silicon: no Rosetta, no Ghostscript, nothing else
   to install.
@@ -16,6 +27,16 @@ DocuPrint CP105b / CP205, and Epson AcuLaser C1700.
 > [foo2hbpl1](https://github.com/mikerr/foo2zjs) Linux driver, which users
 > report working on these printers. It also passes automated tests on
 > macOS. 
+
+## Problems this solves
+
+- Dell C1760nw **won't print from a Mac**, or prints nothing at all.
+- The Dell C1760nw Mac driver **won't install on recent macOS** (Big Sur
+  and later), or doesn't work on Apple Silicon.
+- The **"Dell C1760nw Color Printer" driver is missing** when you add the
+  printer in System Settings → Printers & Scanners.
+- Generic PostScript or PCL drivers print garbage or nothing. The printer
+  only understands Dell's own host-based language (HBPL).
 
 ## Install
 
@@ -112,12 +133,8 @@ Silicon Mac. It then prints `tests/testpage.pdf` through macOS's own print
 pipeline (`tests/check.sh`), decodes the result with foo2zjs's
 `hbpldecode`, and checks page count, page size, colour mode and paper type.
 
-To make a release, push a version tag. Actions builds, tests, and publishes
-the zip:
-
-```bash
-git tag v1.0.0 && git push origin v1.0.0
-```
+To make a release, publish a GitHub release with a new version tag
+(e.g. `v1.0.1`). Actions builds, tests, and attaches the download zip.
 
 ## Licence
 

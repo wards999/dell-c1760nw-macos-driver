@@ -3,8 +3,9 @@ name: Build and test
 on:
   push:
     branches: [main]
-    tags: ['v*']
   pull_request:
+  release:
+    types: [published]
   workflow_dispatch:
 
 permissions:
@@ -35,12 +36,12 @@ jobs:
           name: test-output
           path: tests/out/
 
-      - name: Publish release
-        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Attach download to release
+        if: github.event_name == 'release'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           tag=${GITHUB_REF_NAME}
           name=dell-c1760nw-macos-driver-$tag
           git archive --prefix=$name/ -o $name.zip HEAD
-          gh release create "$tag" $name.zip --title "$tag" --notes-file RELEASE_NOTES.md
+          gh release upload "$tag" $name.zip --clobber
