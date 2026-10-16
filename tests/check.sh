@@ -13,13 +13,13 @@ fail=0
 # In GitHub Actions, also report results as annotations (readable via the API).
 report() {	# level, title, message-file-or-text
     [ -n "${GITHUB_ACTIONS:-}" ] || return 0
-    msg=$( { [ -f "$3" ] && tail -25 "$3" || echo "$3"; } | sed 's/%/%25/g' | awk '{printf "%s%%0A", $0}')
+    msg=$( { [ -f "$3" ] && { grep -iE 'error|warn|filter|rastertohbpl|unable|denied|sandbox|chain|mime' "$3" | head -40; echo ---; tail -5 "$3"; } || echo "$3"; } | sed 's/%/%25/g' | awk '{printf "%s%%0A", $0}')
     echo "::$1 title=$2::$msg"
 }
 
 check() {	# name, expected render mode, expected page dims, cupsfilter options...
     name=$1 mode=$2 dims=$3; shift 3
-    cupsfilter -p "$PPD" -m printer/foo "$@" testpage.pdf \
+    cupsfilter -p "$PPD" -m printer/foo -e "$@" testpage.pdf \
 	> "$OUT/$name.hbpl" 2> "$OUT/$name.log"
     "$DECODE" -d "$OUT/$name" "$OUT/$name.hbpl" > "$OUT/$name.decode.txt" 2>&1
     pages=$(ls "$OUT/$name"-*.p?m 2>/dev/null | wc -l | tr -d ' ')
