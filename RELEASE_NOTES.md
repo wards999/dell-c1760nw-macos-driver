@@ -6,9 +6,9 @@ HBPLv1 printers), built for Apple Silicon.
 Settings. Full steps are in the README.
 
 **Status:**
+- **Tested and working on a real Dell C1760nw**, including toner levels
+  in System Settings.
 - The driver's output matches the Linux foo2hbpl1 driver byte for byte.
 - On an Apple Silicon Mac, test pages printed through macOS's own print
   system come out correctly in colour, grayscale, Letter and A4, with the
   right paper type.
-- It has **not yet been confirmed on a real printer**. Please report
-  results, good or bad, in Issues.

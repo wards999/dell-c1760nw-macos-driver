@@ -23,10 +23,12 @@ the same HBPLv1 printer language:
   paper and envelope sizes.
 - Works from any app, like any other printer.
 
-> **Status:** the driver's output is byte-for-byte identical to the
-> [foo2hbpl1](https://github.com/mikerr/foo2zjs) Linux driver, which users
-> report working on these printers. It also passes automated tests on
-> macOS. 
+> **Status: tested and working on a real Dell C1760nw** from an Apple
+> Silicon Mac, including toner levels in System Settings. The driver's
+> output is byte-for-byte identical to the
+> [foo2hbpl1](https://github.com/mikerr/foo2zjs) Linux driver, and it
+> passes automated print tests on macOS on every change. Owners of the
+> sibling printers listed above: please [report your results](../../issues).
 
 ## Problems this solves
 
