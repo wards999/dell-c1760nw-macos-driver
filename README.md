@@ -64,13 +64,6 @@ To make Grayscale the default, go to System Settings → Printers & Scanners →
 the printer → Options & Supplies → Options. Or save a preset in the Print
 dialog.
 
-## Toner levels
-
-The driver only sends pages to the printer. It doesn't read anything back.
-macOS may still show toner levels under **Options & Supplies → Supply
-Levels**, because it asks network printers for them directly. The printer's
-own web page, `http://<printer-IP>`, always shows toner levels and page
-counts.
 
 ## Troubleshooting
 
