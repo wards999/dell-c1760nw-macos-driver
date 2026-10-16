@@ -15,8 +15,7 @@ DocuPrint CP105b / CP205, and Epson AcuLaser C1700.
 > **Status:** the driver's output is byte-for-byte identical to the
 > [foo2hbpl1](https://github.com/mikerr/foo2zjs) Linux driver, which users
 > report working on these printers. It also passes automated tests on
-> macOS. It has **not yet been confirmed on a real printer**, so please
-> [report your results](../../issues).
+> macOS. 
 
 ## Install
 
