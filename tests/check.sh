@@ -10,6 +10,13 @@ OUT=out
 rm -rf "$OUT" && mkdir -p "$OUT"
 fail=0
 
+# In GitHub Actions, also report results as annotations (readable via the API).
+report() {	# level, title, message-file-or-text
+    [ -n "${GITHUB_ACTIONS:-}" ] || return 0
+    msg=$( { [ -f "$3" ] && tail -25 "$3" || echo "$3"; } | sed 's/%/%25/g' | awk '{printf "%s%%0A", $0}')
+    echo "::$1 title=$2::$msg"
+}
+
 check() {	# name, expected render mode, expected page dims, cupsfilter options...
     name=$1 mode=$2 dims=$3; shift 3
     cupsfilter -p "$PPD" -m printer/foo "$@" testpage.pdf \
@@ -20,9 +27,11 @@ check() {	# name, expected render mode, expected page dims, cupsfilter options..
     if grep -aq "RENDERMODE=$mode" "$OUT/$name.hbpl" && [ "$pages" = 2 ] \
 	&& [ "$got" = "$dims" ]; then
 	echo "PASS $name ($(wc -c < "$OUT/$name.hbpl" | tr -d ' ') bytes, $pages pages, $got)"
+	report notice "PASS $name" "$(wc -c < "$OUT/$name.hbpl" | tr -d ' ') bytes, $pages pages, $got"
     else
 	echo "FAIL $name: pages=$pages dims='$got' (want '$dims')"
 	tail -20 "$OUT/$name.log"
+	report error "FAIL $name: pages=$pages dims='$got'" "$OUT/$name.log"
 	fail=1
     fi
     rm -f "$OUT/$name"-*.p?m	# decoded pages are ~100 MB each
