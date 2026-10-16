@@ -1,0 +1,46 @@
+name: Build and test
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  macos:
+    runs-on: macos-latest   # Apple Silicon
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build and install driver
+        run: ./install.sh
+
+      - name: Build hbpldecode (from foo2zjs) for checking output
+        run: |
+          git clone --depth 1 https://github.com/mikerr/foo2zjs.git /tmp/foo2zjs
+          cd /tmp/foo2zjs
+          clang -O2 -w -o /tmp/hbpldecode hbpldecode.c jbig.c jbig_ar.c
+
+      - name: Print test page through macOS's print pipeline
+        run: tests/check.sh /tmp/hbpldecode
+
+      - name: Keep test output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-output
+          path: tests/out/
+
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag=${GITHUB_REF_NAME}
+          name=dell-c1760nw-macos-driver-$tag
+          git archive --prefix=$name/ -o $name.zip HEAD
+          gh release create "$tag" $name.zip --title "$tag" --notes-file RELEASE_NOTES.md

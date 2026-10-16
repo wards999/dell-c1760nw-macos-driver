@@ -1,0 +1,116 @@
+*PPD-Adobe: "4.3"
+*% Dell C1760nw (HBPLv1) driver for macOS - uses the rastertohbpl1 filter.
+*% Licensed under the GNU General Public License v2 or later.
+*FormatVersion: "4.3"
+*FileVersion: "1.0"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "C1760HB1.PPD"
+*Manufacturer: "Dell"
+*Product: "(Dell C1760nw Color Printer)"
+*ModelName: "Dell C1760nw HBPLv1"
+*ShortNickName: "Dell C1760nw HBPLv1"
+*NickName: "Dell C1760nw HBPLv1"
+*PSVersion: "(3010.000) 0"
+*LanguageLevel: "3"
+*ColorDevice: True
+*DefaultColorSpace: RGB
+*FileSystem: False
+*Throughput: "15"
+*LandscapeOrientation: Plus90
+*TTRasterizer: Type42
+*1284DeviceID: "MFG:Dell;MDL:Dell C1760nw Color Printer;CMD:HBPL;"
+*cupsVersion: 2.2
+*cupsModelNumber: 0
+*cupsManualCopies: True
+*cupsFilter: "application/vnd.cups-raster 0 /Library/Printers/DellHBPL1/Filter/rastertohbpl1"
+
+*OpenUI *PageSize/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize: Letter
+*PageSize Letter/US Letter: "<</PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageSize Legal/US Legal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*PageSize A4/A4: "<</PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageSize Executive/Executive: "<</PageSize[522 756]/ImagingBBox null>>setpagedevice"
+*PageSize A5/A5: "<</PageSize[420 595]/ImagingBBox null>>setpagedevice"
+*PageSize B5/B5 (JIS): "<</PageSize[516 729]/ImagingBBox null>>setpagedevice"
+*PageSize Folio/Folio: "<</PageSize[612 936]/ImagingBBox null>>setpagedevice"
+*PageSize Env10/Envelope #10: "<</PageSize[297 684]/ImagingBBox null>>setpagedevice"
+*PageSize EnvMonarch/Envelope Monarch: "<</PageSize[279 540]/ImagingBBox null>>setpagedevice"
+*PageSize EnvC5/Envelope C5: "<</PageSize[459 649]/ImagingBBox null>>setpagedevice"
+*PageSize EnvDL/Envelope DL: "<</PageSize[312 624]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion: Letter
+*PageRegion Letter/US Letter: "<</PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageRegion Legal/US Legal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*PageRegion A4/A4: "<</PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageRegion Executive/Executive: "<</PageSize[522 756]/ImagingBBox null>>setpagedevice"
+*PageRegion A5/A5: "<</PageSize[420 595]/ImagingBBox null>>setpagedevice"
+*PageRegion B5/B5 (JIS): "<</PageSize[516 729]/ImagingBBox null>>setpagedevice"
+*PageRegion Folio/Folio: "<</PageSize[612 936]/ImagingBBox null>>setpagedevice"
+*PageRegion Env10/Envelope #10: "<</PageSize[297 684]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvMonarch/Envelope Monarch: "<</PageSize[279 540]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvC5/Envelope C5: "<</PageSize[459 649]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvDL/Envelope DL: "<</PageSize[312 624]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageRegion
+
+*% Keep content ~4 mm from the edges; the printer clips anything closer.
+*DefaultImageableArea: Letter
+*ImageableArea Letter: "12 12 600 780"
+*ImageableArea Legal: "12 12 600 996"
+*ImageableArea A4: "12 12 583 830"
+*ImageableArea Executive: "12 12 510 744"
+*ImageableArea A5: "12 12 408 583"
+*ImageableArea B5: "12 12 504 717"
+*ImageableArea Folio: "12 12 600 924"
+*ImageableArea Env10: "12 12 285 672"
+*ImageableArea EnvMonarch: "12 12 267 528"
+*ImageableArea EnvC5: "12 12 447 637"
+*ImageableArea EnvDL: "12 12 300 612"
+
+*DefaultPaperDimension: Letter
+*PaperDimension Letter: "612 792"
+*PaperDimension Legal: "612 1008"
+*PaperDimension A4: "595 842"
+*PaperDimension Executive: "522 756"
+*PaperDimension A5: "420 595"
+*PaperDimension B5: "516 729"
+*PaperDimension Folio: "612 936"
+*PaperDimension Env10: "297 684"
+*PaperDimension EnvMonarch: "279 540"
+*PaperDimension EnvC5: "459 649"
+*PaperDimension EnvDL: "312 624"
+
+*OpenUI *Resolution/Resolution: PickOne
+*OrderDependency: 20 AnySetup *Resolution
+*DefaultResolution: 600dpi
+*Resolution 600dpi/600 DPI: "<</HWResolution[600 600]>>setpagedevice"
+*CloseUI: *Resolution
+
+*OpenUI *ColorModel/Color Mode: PickOne
+*OrderDependency: 30 AnySetup *ColorModel
+*DefaultColorModel: CMYK
+*ColorModel CMYK/Color: "<</cupsColorSpace 6/cupsColorOrder 0/cupsBitsPerColor 8>>setpagedevice"
+*ColorModel RGB/Color (alternate conversion): "<</cupsColorSpace 1/cupsColorOrder 0/cupsBitsPerColor 8>>setpagedevice"
+*ColorModel Gray/Grayscale: "<</cupsColorSpace 0/cupsColorOrder 0/cupsBitsPerColor 8>>setpagedevice"
+*CloseUI: *ColorModel
+
+*OpenUI *MediaType/Paper Type: PickOne
+*OrderDependency: 40 AnySetup *MediaType
+*DefaultMediaType: Plain
+*MediaType Plain/Plain: "<</MediaType(Plain)>>setpagedevice"
+*MediaType Bond/Bond: "<</MediaType(Bond)>>setpagedevice"
+*MediaType LWCard/Lightweight Cardstock: "<</MediaType(LWCard)>>setpagedevice"
+*MediaType LWGCard/Lightweight Glossy Cardstock: "<</MediaType(LWGCard)>>setpagedevice"
+*MediaType Labels/Labels: "<</MediaType(Labels)>>setpagedevice"
+*MediaType Envelope/Envelope: "<</MediaType(Envelope)>>setpagedevice"
+*MediaType Recycled/Recycled: "<</MediaType(Recycled)>>setpagedevice"
+*CloseUI: *MediaType
+
+*DefaultFont: Courier
+*Font Courier: Standard "(002.004S)" Standard ROM
+*Font Helvetica: Standard "(001.006S)" Standard ROM
+*Font Times-Roman: Standard "(001.007S)" Standard ROM
