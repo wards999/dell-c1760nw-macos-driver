@@ -1,4 +1,5 @@
 # Dell C1760nw printer driver for Mac (Apple Silicon)
+<img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/d0a015f6-ed66-4748-be9f-1d9476df795c" />
 
 **A working macOS driver for the Dell C1760nw color laser printer** on Apple
 Silicon Macs (M1, M2, M3, M4 and later). Dell's own Mac driver stopped
