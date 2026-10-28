@@ -2,7 +2,7 @@
 <img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/d0a015f6-ed66-4748-be9f-1d9476df795c" />
 
 **A working macOS driver for the Dell C1760nw color laser printer** on Apple
-Silicon Macs (M1, M2, M3, M4 and later). Dell's own Mac driver stopped
+Silicon Macs (M1, M2, M3, M4 and later). The printer was released in 2012 and Dell's own Mac driver stopped
 working years ago, and the printer has no AirPrint. If your Dell C1760nw
 won't print from your Mac, or macOS can't find a driver for it, this fixes
 it.
